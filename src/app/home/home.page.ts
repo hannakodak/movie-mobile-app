@@ -8,6 +8,9 @@ import { MovieService } from '../services/movie';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class HomePage {
+
+  movies: any[] = []; // store movies
+
   // connect the movie service
   constructor(private movieService: MovieService) {}
 
@@ -16,8 +19,8 @@ export class HomePage {
     //call API adn get data
     this.movieService.getTrendingMovies().subscribe(data => {
       
-      //show result in console
-      console.log(data);
+      //save movies to show on screen
+      this.movies = (data as any).result;
     });
   }
 }
