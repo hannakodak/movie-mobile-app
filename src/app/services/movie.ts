@@ -24,4 +24,9 @@ export class MovieService {
   searchMovies(query: string) {
     return this.http.get(`${this.baseUrl}/search/movie?query=${query}&api_key=${this.apiKey}`);
   }
+
+  // get cast and crew for selected movie
+  getMovieCredits(movieId: number) {
+    return this.http.get(`${this.baseUrl}/movie/${movieId}/credits?api_key=${this.apiKey}`);
+  }
 }

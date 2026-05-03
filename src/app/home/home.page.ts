@@ -3,6 +3,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonInp
 import { MovieService } from '../services/movie';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -16,7 +17,10 @@ export class HomePage {
   pageTitle: string = "Today's Trending Movies";
 
   // connect the movie service
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private router: Router
+  ) {}
 
   //runs when page loads
   ngOnInit() {
@@ -41,5 +45,12 @@ export class HomePage {
       this.movies = (data as any).results;
       });
     }
+  }
+
+  // navigate to movie details aftern click
+  openMovie(movie: any) {
+    this.router.navigate(['movie-details', movie.id], {
+      state: {movie: movie}
+    });
   }
 }

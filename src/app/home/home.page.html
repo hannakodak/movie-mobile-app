@@ -19,7 +19,7 @@
 
   <h2>{{pageTitle}}</h2>
 
-  <div *ngFor="let movie of movies">
+  <div *ngFor="let movie of movies" (click)="openMovie(movie)">
     <h3>{{movie.title}}</h3>
 
     <img
