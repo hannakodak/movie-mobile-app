@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonInput } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, FormsModule, IonButton, IonItem, IonInput],
 })
 export class HomePage {
 
   movies: any[] = []; // store movies
+  searchText: string =''; // search input text
 
   // connect the movie service
   constructor(private movieService: MovieService) {}
@@ -21,6 +23,13 @@ export class HomePage {
     this.movieService.getTrendingMovies().subscribe(data => {
       
       //save movies to show on screen
+      this.movies = (data as any).results;
+    });
+  }
+
+  // search movies using text entered by user
+  searchMovies() {
+    this.movieService.searchMovies(this.searchText).subscribe(data => {
       this.movies = (data as any).results;
     });
   }

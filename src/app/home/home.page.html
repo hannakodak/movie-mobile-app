@@ -10,12 +10,21 @@
   
   <h2>Today’s Trending Movies</h2>
 
+  <ion-item>
+    <ion-input [(ngModel)]="searchText" placeholder="Search movie"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="searchMovies()">
+    Search
+  </ion-button>
+
   <div *ngFor="let movie of movies">
     <h3>{{movie.title}}</h3>
 
     <img
       *ngIf="movie.poster_path"
-      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"width="150"
+      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+      width="150"
 >
     <p>{{movie.overview}}</p>
   </div>
