@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonInput } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonInput, IonIcon, IonButtons } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import {addIcons} from 'ionicons';
+import {heart} from 'ionicons/icons';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, FormsModule, IonButton, IonItem, IonInput],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, FormsModule, IonButton, IonItem, IonInput, IonIcon, IonButtons],
 })
 export class HomePage {
 
@@ -20,7 +22,9 @@ export class HomePage {
   constructor(
     private movieService: MovieService,
     private router: Router
-  ) {}
+  ) {
+    addIcons({heart});
+  }
 
   //runs when page loads
   ngOnInit() {
