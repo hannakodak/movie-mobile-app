@@ -13,10 +13,16 @@ export class FavouritesService {
   // add movie to favourites
   addFavourite(movie: any) {
     let favs = this.getFavourites();
-    favs.push(movie);
-    localStorage.setItem('favourites', JSON.stringify(favs));
-  }
+    
+    // check if movie already exists
+    const exists = favs.some(m => m.id === movie.id)
 
+    if (!exists) {
+      favs.push(movie);
+      localStorage.setItem('favourites', JSON.stringify(favs));
+    }
+  }
+  
   // remove movie from favourites
   removeFavourite(movieId: number) {
     let favs = this.getFavourites();
