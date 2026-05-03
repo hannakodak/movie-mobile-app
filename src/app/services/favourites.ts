@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FavouritesService {
-  
+
    // get favourites from localStorage
   getFavourites(): any[] {
     return JSON.parse(localStorage.getItem('favourites') || '[]');
@@ -17,4 +17,10 @@ export class FavouritesService {
     localStorage.setItem('favourites', JSON.stringify(favs));
   }
 
+  // remove movie from favourites
+  removeFavourite(movieId: number) {
+    let favs = this.getFavourites();
+    favs = favs.filter(m => m.id !== movieId);
+    localStorage.setItem('favourites', JSON.stringify(favs));
+  }
 }

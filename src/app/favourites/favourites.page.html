@@ -13,6 +13,11 @@
 
   <div *ngFor="let movie of favourites">
     {{movie?.title}}
-  </div>
+
+  <ion-button (click)="remove(movie.id)">
+    Remove
+  </ion-button>
+
+</div>
 
 </ion-content>
