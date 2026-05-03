@@ -20,6 +20,11 @@
 
   <p>{{movie?.overview}}</p>
 
+  <ion-button (click) = "addToFavourites()">
+       <ion-icon name="heart"> </ion-icon>
+       Add to Favourites
+  </ion-button>
+
   <h3>Cast</h3>
   <div *ngFor="let actor of cast">
     <img

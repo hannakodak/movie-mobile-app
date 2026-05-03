@@ -6,6 +6,7 @@ import { MovieService } from '../services/movie';
 import { ActivatedRoute, Router } from '@angular/router';
 import {addIcons} from 'ionicons';
 import {home, heart} from 'ionicons/icons';
+import { FavouritesService } from '../services/favourites';
 
 @Component({
   selector: 'app-movie-details',
@@ -22,7 +23,8 @@ export class MovieDetailsPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private favouritesService: FavouritesService
   ) { addIcons({home, heart});
   }
   
@@ -51,4 +53,9 @@ export class MovieDetailsPage implements OnInit {
   goFavourites(){
     this.router.navigate(['favourites'])
   }
+
+  // add selected movie to favourites
+  addToFavourites() {
+    this.favouritesService.addFavourite(this.movie);
+}
 }
