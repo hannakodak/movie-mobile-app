@@ -13,6 +13,7 @@ export class HomePage {
 
   movies: any[] = []; // store movies
   searchText: string =''; // search input text
+  pageTitle: string = "Today's Trending Movies";
 
   // connect the movie service
   constructor(private movieService: MovieService) {}
@@ -27,10 +28,18 @@ export class HomePage {
     });
   }
 
-  // search movies using text entered by user
+  // search movies using text entered by user or show trending if search box empty
   searchMovies() {
-    this.movieService.searchMovies(this.searchText).subscribe(data => {
+
+    if (this.searchText.trim() === '') {
+      this.movieService.getTrendingMovies().subscribe(data => {
+        this.movies = (data as any).results;
+      });
+    } else {
+      this.pageTitle = this.searchText + ' Movies';
+      this.movieService.searchMovies(this.searchText).subscribe(data => {
       this.movies = (data as any).results;
-    });
+      });
+    }
   }
 }

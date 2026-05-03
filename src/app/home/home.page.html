@@ -8,8 +8,7 @@
 
 <ion-content [fullscreen]="true">
   
-  <h2>Today’s Trending Movies</h2>
-
+  
   <ion-item>
     <ion-input [(ngModel)]="searchText" placeholder="Search movie"></ion-input>
   </ion-item>
@@ -17,6 +16,8 @@
   <ion-button expand="full" (click)="searchMovies()">
     Search
   </ion-button>
+
+  <h2>{{pageTitle}}</h2>
 
   <div *ngFor="let movie of movies">
     <h3>{{movie.title}}</h3>
