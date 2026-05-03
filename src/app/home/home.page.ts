@@ -57,4 +57,9 @@ export class HomePage {
       state: {movie: movie}
     });
   }
+
+    // go favourites page 
+  goFavourites(){
+    this.router.navigate(['favourites'])
+  }
 }
