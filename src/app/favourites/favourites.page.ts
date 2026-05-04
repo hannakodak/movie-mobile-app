@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar,  IonButton, IonIcon, IonButtons} from '@ionic/angular/standalone';
 import { FavouritesService } from '../services/favourites';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import {addIcons} from 'ionicons';
 import {home} from 'ionicons/icons';
 
@@ -19,7 +19,6 @@ export class FavouritesPage implements OnInit {
 
   constructor(
     private favouritesService: FavouritesService,
-    private route: ActivatedRoute,
     private router: Router) { 
     addIcons({home});
   }

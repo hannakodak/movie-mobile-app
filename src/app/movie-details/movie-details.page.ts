@@ -19,6 +19,7 @@ export class MovieDetailsPage implements OnInit {
   movie: any;
   cast: any[] = [];
   crew: any[] = [];
+  isFavourite: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +43,9 @@ export class MovieDetailsPage implements OnInit {
      this.crew = (data as any).crew;
     });
 
+    // check if selected movie is already favourite
+    this.isFavourite = this.favouritesService.isFavourite(movieId);
+
   }
 
   // go back home page 
@@ -54,8 +58,14 @@ export class MovieDetailsPage implements OnInit {
     this.router.navigate(['favourites'])
   }
 
-  // add selected movie to favourites
-  addToFavourites() {
-    this.favouritesService.addFavourite(this.movie);
-}
+  // add or remove selected movie to favourites
+  toggleFavourite() {
+    if (this.isFavourite) {
+      this.favouritesService.removeFavourite(this.movie.id);
+      this.isFavourite = false;
+    } else {
+      this.favouritesService.addFavourite(this.movie);
+      this.isFavourite = true;
+    }
+  }
 }
