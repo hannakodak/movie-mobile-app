@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonInput, IonIcon, IonButtons } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonInput, IonIcon, IonButtons, IonCard, IonCardContent } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import {heart} from 'ionicons/icons';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, FormsModule, IonButton, IonItem, IonInput, IonIcon, IonButtons],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, FormsModule, IonButton, IonItem, IonInput, IonIcon, IonButtons, IonCard, IonCardContent],
 })
 export class HomePage {
 

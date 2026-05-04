@@ -3,8 +3,8 @@
     <ion-title>Favourite Movies</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click) = "goHome()">
-       <ion-icon name="home"> </ion-icon>
+      <ion-button (click)="goHome()">
+        <ion-icon name="home"> </ion-icon>
       </ion-button>
     </ion-buttons>
 
@@ -19,12 +19,22 @@
   </ion-header>
 
   <div *ngFor="let movie of favourites">
-    {{movie?.title}}
+    <ion-card>
+      <ion-card-content>
+        <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" width="150">
+        <div>{{movie?.title}} </div>
 
-  <ion-button (click)="remove(movie.id)">
-    Remove
-  </ion-button>
+        <div>
+          <ion-button (click)="openMovie(movie)">
+            Details
+          </ion-button>
 
-</div>
+          <ion-button (click)="remove(movie.id)">
+            Remove
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>

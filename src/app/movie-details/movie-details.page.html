@@ -3,14 +3,14 @@
     <ion-title>{{movie?.title}}</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click) = "goHome()">
-       <ion-icon name="home"> </ion-icon>
+      <ion-button (click)="goHome()">
+        <ion-icon name="home"> </ion-icon>
       </ion-button>
     </ion-buttons>
 
-        <ion-buttons slot="end">
-      <ion-button (click) = "goFavourites()">
-       <ion-icon name="heart"> </ion-icon>
+    <ion-buttons slot="end">
+      <ion-button (click)="goFavourites()">
+        <ion-icon name="heart"> </ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -20,19 +20,14 @@
 
   <p>{{movie?.overview}}</p>
 
-  <ion-button (click) = "toggleFavourite()"
-  [fill]="isFavourite ? 'outline' : 'solid' ">
-       <ion-icon name="heart"> </ion-icon>
-       {{ isFavourite ? 'Remote from Favourites' : 'Add to Favourites' }}
+  <ion-button (click)="toggleFavourite()" [fill]="isFavourite ? 'outline' : 'solid' ">
+    <ion-icon name="heart"> </ion-icon>
+    {{ isFavourite ? 'Remote from Favourites' : 'Add to Favourites' }}
   </ion-button>
 
   <h3>Cast</h3>
   <div *ngFor="let actor of cast">
-    <img
-      *ngIf="actor.profile_path"
-      [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path"
-      width="100"
-    >
+    <img *ngIf="actor.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path" width="100">
 
     <p *ngIf="!actor.profile_path">No image</p>
 
@@ -43,16 +38,12 @@
 
   <h3>Crew</h3>
   <div *ngFor="let person of crew">
-    <img
-      *ngIf="person.profile_path"
-      [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
-      width="100"
-    >
+    <img *ngIf="person.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path" width="100">
 
     <p *ngIf="!person.profile_path">No image</p>
-    
+
     <div>
-     {{ person.name }} - {{ person.job }}
-   </div>
+      {{ person.name }} - {{ person.job }}
+    </div>
   </div>
 </ion-content>

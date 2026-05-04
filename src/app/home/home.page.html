@@ -2,21 +2,21 @@
   <ion-toolbar>
 
     <ion-title>
-       G00474354
+      G00474354
     </ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click) = "goFavourites()">
-       <ion-icon name="heart"></ion-icon>
+      <ion-button (click)="goFavourites()">
+        <ion-icon name="heart"></ion-icon>
       </ion-button>
-     </ion-buttons>
+    </ion-buttons>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  
+
+
   <ion-item>
     <ion-input [(ngModel)]="searchText" placeholder="Search movie"></ion-input>
   </ion-item>
@@ -28,13 +28,13 @@
   <h2>{{pageTitle}}</h2>
 
   <div *ngFor="let movie of movies" (click)="openMovie(movie)">
-    <h3>{{movie.title}}</h3>
+    <ion-card>
+      <ion-card-content>
+        <h3>{{movie.title}}</h3>
 
-    <img
-      *ngIf="movie.poster_path"
-      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-      width="150"
->
-    <p>{{movie.overview}}</p>
+        <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" width="150">
+        <p>{{movie.overview}}</p>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
