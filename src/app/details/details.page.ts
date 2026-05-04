@@ -49,5 +49,13 @@ export class DetailsPage implements OnInit {
   goFavourites() {
     this.router.navigate(['favourites'])
   }
+
+    //open movie details page
+  openMovie(movie: any) {
+    this.router.navigate(['movie-details', movie.id], {
+      state: { movie: movie }
+    });
+
+  }
 }
 

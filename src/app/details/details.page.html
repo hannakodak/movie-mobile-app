@@ -34,7 +34,7 @@
   <ion-card>
     <ion-card-content>
       <h3>Other Movies</h3>
-      <div *ngFor="let movie of movies">
+      <div *ngFor="let movie of movies" (click) ="openMovie(movie)">
         <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" width="40">
         <p *ngIf="!movie.poster_path">No image</p>
         {{ movie.title }}

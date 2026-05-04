@@ -40,6 +40,7 @@ export class HomePage {
   searchMovies() {
 
     if (this.searchText.trim() === '') {
+      this.pageTitle = "Today's Trending Movies";
       this.movieService.getTrendingMovies().subscribe(data => {
         this.movies = (data as any).results;
       });
