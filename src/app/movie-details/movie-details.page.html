@@ -6,9 +6,7 @@
       <ion-button (click)="goHome()">
         <ion-icon name="home"> </ion-icon>
       </ion-button>
-    </ion-buttons>
 
-    <ion-buttons slot="end">
       <ion-button (click)="goFavourites()">
         <ion-icon name="heart"> </ion-icon>
       </ion-button>
@@ -26,24 +24,33 @@
   </ion-button>
 
   <h3>Cast</h3>
-  <div *ngFor="let actor of cast">
-    <img *ngIf="actor.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path" width="100">
+  <div *ngFor="let actor of cast" (click)="openDetails(actor)">
+    <ion-card>
+      <ion-card-content>
+        <img *ngIf="actor.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path" width="100">
 
-    <p *ngIf="!actor.profile_path">No image</p>
+        <p *ngIf="!actor.profile_path">No image</p>
 
-    <div>
-      {{ actor.name }} - {{ actor.character }}
-    </div>
+        <div>
+          {{ actor.name }} - {{ actor.character }}
+        </div>
+
+      </ion-card-content>
+    </ion-card>
   </div>
 
   <h3>Crew</h3>
-  <div *ngFor="let person of crew">
-    <img *ngIf="person.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path" width="100">
+  <div *ngFor="let person of crew" (click)="openDetails(person)">
+    <ion-card>
+      <ion-card-content>
+        <img *ngIf="person.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path" width="100">
 
-    <p *ngIf="!person.profile_path">No image</p>
+        <p *ngIf="!person.profile_path">No image</p>
 
-    <div>
-      {{ person.name }} - {{ person.job }}
-    </div>
+        <div>
+          {{ person.name }} - {{ person.job }}
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

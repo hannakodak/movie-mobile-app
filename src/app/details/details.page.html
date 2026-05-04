@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{person?.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goHome()">
+        <ion-icon name="home"> </ion-icon>
+      </ion-button>
+
+      <ion-button (click)="goFavourites()">
+        <ion-icon name="heart"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <img *ngIf="person?.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path">
+
+      <p *ngIf="!person?.profile_path">No image</p>
+      <p *ngIf="person?.birthday"> {{ person.birthday }}</p>
+      <p *ngIf="person?.deathday"> {{ person.deathday }}</p>
+      <div *ngIf="person?.also_known_as?.length">
+        <div *ngFor="let name of person.also_known_as">
+          {{ name }}
+        </div>
+      </div>
+      <p *ngIf="person?.biography"> {{ person.biography }}</p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <h3>Other Movies</h3>
+      <div *ngFor="let movie of movies">
+        <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" width="40">
+        <p *ngIf="!movie.poster_path">No image</p>
+        {{ movie.title }}
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonButtons } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonButtons, IonCard, IonCardContent } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie';
 import { ActivatedRoute, Router } from '@angular/router';
 import { addIcons } from 'ionicons';
@@ -13,7 +13,7 @@ import { FavouritesService } from '../services/favourites';
   templateUrl: './movie-details.page.html',
   styleUrls: ['./movie-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonIcon, IonButtons]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonIcon, IonButtons, IonCard, IonCardContent]
 })
 export class MovieDetailsPage implements OnInit {
   movie: any;
@@ -68,5 +68,10 @@ export class MovieDetailsPage implements OnInit {
       this.favouritesService.addFavourite(this.movie);
       this.isFavourite = true;
     }
+  }
+
+  // open details page for cast or crew member
+  openDetails(person: any) {
+    this.router.navigate(['details', person.id]);
   }
 }

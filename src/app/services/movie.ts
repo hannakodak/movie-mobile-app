@@ -29,4 +29,14 @@ export class MovieService {
   getMovieCredits(movieId: number) {
     return this.http.get(`${this.baseUrl}/movie/${movieId}/credits?api_key=${this.apiKey}`);
   }
+
+  // get person details
+  getPersonDetails(personId: number) {
+  return this.http.get(`${this.baseUrl}/person/${personId}?api_key=${this.apiKey}`);
+  }
+
+  // get movies for this person
+  getPersonMovieCredits(personId: number) {
+  return this.http.get(`${this.baseUrl}/person/${personId}/movie_credits?api_key=${this.apiKey}`);
+  }
 }

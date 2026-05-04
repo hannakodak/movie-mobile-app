@@ -13,9 +13,14 @@ export const routes: Routes = [
   {
     path: 'movie-details/:id',
     loadComponent: () => import('./movie-details/movie-details.page').then( m => m.MovieDetailsPage)
-  },  {
+  },
+  {
     path: 'favourites',
     loadComponent: () => import('./favourites/favourites.page').then( m => m.FavouritesPage)
+  },
+  {
+    path: 'details/:id',
+    loadComponent: () => import('./details/details.page').then( m => m.DetailsPage)
   },
 
 
